@@ -1,0 +1,7 @@
+# Common gitignore for web projects
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+.env
+
