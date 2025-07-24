@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Your Name - Portfolio</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		/* Header */
+		header {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 40px;
+			text-align: center;
+			margin-bottom: 30px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			animation: slideDown 0.8s ease-out;
+		}
+
+		.profile-img {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 20px;
+			border: 5px solid #667eea;
+			transition: transform 0.3s ease;
+		}
+
+		.profile-img:hover {
+			transform: scale(1.05);
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+		.cv-download {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 15px 30px;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+		}
+
+		.cv-download:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+		}
+
+		.download-icon {
+			font-size: 1.2rem;
+		}
+
+		/* Main Content */
+		.main-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			margin-bottom: 30px;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 30px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			animation: slideUp 0.8s ease-out;
+		}
+
+		.card:hover {
+			transform: translateY(-10px);
+		}
+
+		.card h2 {
+			font-size: 1.8rem;
+			margin-bottom: 20px;
+			color: #333;
+			border-bottom: 3px solid #667eea;
+			padding-bottom: 10px;
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.skill-item {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 10px 15px;
+			border-radius: 25px;
+			text-align: center;
+			font-weight: 500;
+			font-size: 0.9rem;
+			transition: transform 0.3s ease;
+		}
+
+		.skill-item:hover {
+			transform: scale(1.05);
+		}
+
+		.project {
+			background: #f8f9fa;
+			border-radius: 15px;
+			padding: 20px;
+			margin-bottom: 20px;
+			border-left: 5px solid #667eea;
+			transition: all 0.3s ease;
+		}
+
+		.project:hover {
+			background: #e9ecef;
+			transform: translateX(10px);
+		}
+
+		.project h3 {
+			color: #333;
+			margin-bottom: 10px;
+			font-size: 1.3rem;
+		}
+
+		.project p {
+			color: #666;
+			margin-bottom: 10px;
+		}
+
+		.project-link {
+			color: #667eea;
+			text-decoration: none;
+			font-weight: 600;
+			transition: color 0.3s ease;
+		}
+
+		.project-link:hover {
+			color: #764ba2;
+		}
+
+		/* Contact Section */
+		.contact-info {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			padding: 15px;
+			background: #f8f9fa;
+			border-radius: 15px;
+			transition: all 0.3s ease;
+		}
+
+		.contact-item:hover {
+			background: #e9ecef;
+			transform: scale(1.02);
+		}
+
+		.contact-icon {
+			font-size: 1.5rem;
+			color: #667eea;
+		}
+
+		.contact-item a {
+			color: #333;
+			text-decoration: none;
+		}
+
+		.contact-item a:hover {
+			color: #667eea;
+		}
+
+		/* Footer */
+		footer {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 30px;
+			text-align: center;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Animations */
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-50px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(50px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.container {
+				padding: 15px;
+			}
+
+			header {
+				padding: 30px 20px;
+			}
+
+			h1 {
+				font-size: 2rem;
+			}
+
+			.main-content {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+
+			.card {
+				padding: 20px;
+			}
+
+			.skills-grid {
+				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+				gap: 10px;
+			}
+
+			.contact-info {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* Floating particles animation */
+		.particle {
+			position: absolute;
+			width: 4px;
+			height: 4px;
+			background: rgba(255, 255, 255, 0.3);
+			border-radius: 50%;
+			animation: float 6s ease-in-out infinite;
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0px) rotate(0deg);
+			}
+
+			50% {
+				transform: translateY(-20px) rotate(180deg);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<!-- Header Section -->
+		<header>
+			<img src="https://via.placeholder.com/150x150/667eea/ffffff?text=Your+Photo"
+				alt="Profile Picture" class="profile-img">
+			<h1>Your Name</h1>
+			<p class="subtitle">Full Stack Developer & UI/UX Designer</p>
+			<a href="your-cv.pdf" class="cv-download" download>
+				<span class="download-icon">📄</span>
+				Download CV
+			</a>
+		</header>
+
+		<!-- Main Content -->
+		<div class="main-content">
+			<!-- About Section -->
+			<div class="card">
+				<h2>About Me</h2>
+				<p>I'm a passionate developer with 7+ years of experience creating scalable and
+					functional
+					backend applications. I love turning complex problems into simple, beautiful
+					designs
+					and enjoy collaborating with teams to create amazing user experiences.</p>
+				<p>When I'm not coding, you can find me exploring new technologies, contributing to open
+					source projects, or enjoying a good cup of coffee while reading about the latest
+					industry trends.</p>
+			</div>
+
+			<!-- Skills Section -->
+			<div class="card">
+				<h2>Skills</h2>
+				<div class="skills-grid">
+					<div class="skill-item">Python</div>
+					<div class="skill-item">Linux</div>
+					<div class="skill-item">JavaScript</div>
+					<div class="skill-item">React</div>
+					<div class="skill-item">Node.js</div>
+					<div class="skill-item">HTML/CSS</div>
+					<div class="skill-item">Git</div>
+					<div class="skill-item">AWS</div>
+					<div class="skill-item">SQL</div>
+					<div class="skill-item">MongoDB</div>
+					<div class="skill-item">Redis</div>
+
+				</div>
+			</div>
+
+			<!-- Projects Section -->
+			<div class="card">
+				<h2>Featured Projects</h2>
+
+				<div class="project">
+					<h3>E-commerce Platform</h3>
+					<p>A full-stack e-commerce solution built with React and Node.js, featuring user
+						authentication, payment integration, and admin dashboard.</p>
+					<a href="#" class="project-link">View Project →</a>
+				</div>
+
+				<div class="project">
+					<h3>Task Management App</h3>
+					<p>A collaborative task management application with real-time updates, built
+						using React, Socket.io, and MongoDB.</p>
+					<a href="#" class="project-link">View Project →</a>
+				</div>
+
+				<div class="project">
+					<h3>Weather Dashboard</h3>
+					<p>A responsive weather application that provides detailed forecasts and
+						historical data visualization using D3.js and OpenWeather API.</p>
+					<a href="#" class="project-link">View Project →</a>
+				</div>
+			</div>
+
+			<!-- Contact Section -->
+			<div class="card">
+				<h2>Get In Touch</h2>
+				<p>I'm always interested in new opportunities and interesting projects. Let's connect!
+				</p>
+
+				<div class="contact-info">
+					<div class="contact-item">
+						<span class="contact-icon">📧</span>
+						<a href="mailto:your.email@example.com">your.email@example.com</a>
+					</div>
+					<div class="contact-item">
+						<span class="contact-icon">💼</span>
+						<a href="https://linkedin.com/in/yourprofile"
+							target="_blank">LinkedIn</a>
+					</div>
+					<div class="contact-item">
+						<span class="contact-icon">🐙</span>
+						<a href="https://github.com/yourusername" target="_blank">GitHub</a>
+					</div>
+					<div class="contact-item">
+						<span class="contact-icon">🌐</span>
+						<a href="https://yourwebsite.com" target="_blank">Website</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<p>&copy; 2025 Your Name. All rights reserved. Built with ❤️ and hosted on GitHub Pages.</p>
+		</footer>
+	</div>
+
+	<script>
+		// Add floating particles
+		function createParticles() {
+			const particleCount = 50;
+			const body = document.body;
+
+			for (let i = 0; i < particleCount; i++) {
+				const particle = document.createElement('div');
+				particle.className = 'particle';
+				particle.style.left = Math.random() * 100 + '%';
+				particle.style.top = Math.random() * 100 + '%';
+				particle.style.animationDelay = Math.random() * 6 + 's';
+				particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+				body.appendChild(particle);
+			}
+		}
+
+		// Smooth scrolling for internal links
+		document.addEventListener('DOMContentLoaded', function () {
+			createParticles();
+
+			// Add smooth scroll behavior
+			const links = document.querySelectorAll('a[href^="#"]');
+			links.forEach(link => {
+				link.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth'
+						});
+					}
+				});
+			});
+
+			// Add animation delay to cards
+			const cards = document.querySelectorAll('.card');
+			cards.forEach((card, index) => {
+				card.style.animationDelay = (index * 0.2) + 's';
+			});
+		});
+
+		// CV download tracking (optional)
+		document.querySelector('.cv-download').addEventListener('click', function () {
+			console.log('CV downloaded');
+			// You can add analytics tracking here
+		});
+	</script>
+</body>
+
+</html>
